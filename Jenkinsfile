@@ -38,9 +38,10 @@ podTemplate(containers: [
 		    	./gradlew checkstyleMain
                     	./gradlew jacocoTestReport
                     	'''
-		    } catch {
+		    } 
+		    catch (err) {
 			echo "checkstyle failed"
-			}
+		    }
                     publishHTML (target: [
                         reportDir: 'Chapter08/sample1/build/reports/jacoco/test/html',
                         reportFiles: 'checkstyle.html',
