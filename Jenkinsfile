@@ -30,6 +30,19 @@ podTemplate(containers: [
                         reportName: "JaCoCo Report"
                     ])
                 }
+		stage("jacoco checkstyle") {
+		    sh '''
+                    pwd
+                    cd Chapter08/sample1
+                    ./gradlew checkstyleMain
+                    ./gradlew jacocoTestReport
+                    '''
+                    publishHTML (target: [
+                        reportDir: 'Chapter08/sample1/build/reports/jacoco/test/html',
+                        reportFiles: 'checkstyle.html',
+                        reportName: "JaCoCo CheckStyle"
+                    ])
+                }
             }
         }
     }
